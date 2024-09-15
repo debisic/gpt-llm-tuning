@@ -5,7 +5,6 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-
 @app.get('/')
 def read_root():
     """ Welcome page of the API """
