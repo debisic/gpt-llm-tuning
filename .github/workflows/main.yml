@@ -55,12 +55,15 @@ jobs:
 
       - name: Set up Docker Build
         run: |
-          docker build -t gpt-llm ./docker
+          docker build -f ./docker/train.Dockerfile -t gpt-llm ./docker
+          docker build -f ./docker/api.Dockerfile -t server ./docker
 
 
       - name: runs-docker
         run: |
           curl https://ipinfo.io/ip
+          docker run -it --gpus all -v /home/ubuntu/gpt-llm-tuning:/usr/src/app gpt-llm
+          
           docker run -p 80:8000 gpt-llm
           echo ${{ steps.ip.outputs.ipv4 }}
 
