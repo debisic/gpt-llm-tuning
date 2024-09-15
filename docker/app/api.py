@@ -1,6 +1,6 @@
 """ Implementing an API to test the model"""
 
-from inference import *
+from inference import prediction
 from fastapi import FastAPI
 
 app = FastAPI()
