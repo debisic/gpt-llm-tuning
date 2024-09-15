@@ -1,0 +1,87 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+
+
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  build-ip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Public IP
+        id: ip
+        uses: haythem/public-ip@v1.3
+      - name: Print Public IP
+        run: |
+          echo ${{ steps.ip.outputs.ipv4 }}
+          
+
+  lint:
+    name: Code Quality Check (Linting)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: et up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.8"
+
+      - name: Install dependencies
+        run: |
+          pip install pylint  # or other linting tools you use
+          pip install -r ./docker/requirements.txt
+
+      - name: Run linting
+        run: |
+          pylint main.py  # Replace with your code director
+          pylint test_api.py
+          pylint merged_model.py
+          pylint ./docker/app/inference.py
+          pylint ./docker/app/api.py
+          echo ${{ steps.ip.outputs.ipv4 }}
+    
+  build:
+    name: Docker Build
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Build
+        run: |
+          docker build -t gpt-llm ./docker
+
+
+      - name: runs-docker
+        run: |
+          curl https://ipinfo.io/ip
+          docker run -p 80:8000 gpt-llm
+          echo ${{ steps.ip.outputs.ipv4 }}
+
+      #test:
+      #name: API Testing
+      #runs-on: ubuntu-latest
+      #needs: build
+      #steps:
+      # - name: Checkout code
+      # uses: actions/checkout@v3
+
+      # - name: Set up Python
+      # uses: actions/setup-python@v3
+      #with:
+      #python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          pip install requests  # or any other testing tools you use
+
+      - name: Run API tests
+        run: |
+          python test_api.py  # Replace with your API test script
+
