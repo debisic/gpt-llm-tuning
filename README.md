@@ -10,12 +10,12 @@ Setting up the project locally, first clone this repository using the command be
 ```
 git clone https://github.com/debisic/gpt-llm-tuning.git
 ```
-- 
+
 Hardware requirements on Amazon EC2
-OS - Linux/Ubuntu
-AMI - Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.3.0 (Ubuntu 20.04) 
-EBS - at least 60 GB, 
-SSH and HTTP ports opened
+- OS - Linux/Ubuntu
+- AMI - Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.3.0 (Ubuntu 20.04) 
+- EBS - at least 60 GB, 
+- SSH and HTTP ports opened
 
 # USER GUIDE
 
@@ -82,5 +82,5 @@ GET Request: Sends a request to the root endpoint (http://0.0.0.0:8000/)  with a
 Error Handling: The test includes exception handling for timeout, connection errors, and other request-related exceptions to ensure robustness.
 
 ## NB
-The FastAPI endpoint above should be replaced with the IP of the VM mapped to port 80, for example [44.121.33.222:80](./images/FastAPI-UI-1.png)
+The FastAPI endpoint above should be replaced with the IP of the VM mapped to port 80, for example 44.121.33.222:80 as shown in these [figures](./images/FastAPI-UI-1.png)
 
