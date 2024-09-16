@@ -66,7 +66,7 @@ Suitability for Instruction Tuning: GPT-2 excels at generating coherent text tha
 
 2 - Quantization
 
-Quantization is applied to GPT-2 to reduce its model size and improve inference speed. This lowers memory and computational costs, making deployment more efficient on resource-limited devices. Despite using lower precision (e.g., 4-bit or 8-bit), quantization maintains acceptable performance, ensuring faster and cost-effective real-time applications, such as serving an API. for the implementation see the [main.py ](https://github.com/debisic/gpt-llm-tuning.git/main/main.pyi)
+Quantization is applied to GPT-2 to reduce its model size and improve inference speed. This lowers memory and computational costs, making deployment more efficient on resource-limited devices. Despite using lower precision (e.g., 4-bit or 8-bit), quantization maintains acceptable performance, ensuring faster and cost-effective real-time applications, such as serving an API. for the implementation see the [main.py ](./main.py)
 
 3 - Model Fine-tuning
 
