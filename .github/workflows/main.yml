@@ -6,7 +6,7 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - dev
+      - main
 jobs:
   build-ip:
     runs-on: ubuntu-latest
@@ -45,35 +45,35 @@ jobs:
           pylint ./docker/app/api.py
           echo ${{ steps.ip.outputs.ipv4 }}
     
-  build:
-    name: Docker Build
-    runs-on: ubuntu-latest
-    needs: lint
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+  # build:
+  #   name: Docker Build
+  #   runs-on: ubuntu-latest
+  #   needs: lint
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
 
-      - name: Set up Docker Build
-        run: |
-          #builds the TRAINING model
-          docker build -f ./docker/train.Dockerfile -t gpt-llm ./docker
-          #builds the API server 
-          docker build -f ./docker/api.Dockerfile -t server ./docker
-
-
-      - name: runs-docker
-        run: |
-          curl https://ipinfo.io/ip
-          docker run -it --gpus all -v /home/ubuntu/gpt-llm-tuning:/usr/src/app gpt-llm
-          docker run -it --gpus all -v /home/ubuntu/gpt-llm-tuning/docker/app:/usr/src/app -p 80:8000 server
+  #     - name: Set up Docker Build
+  #       run: |
+  #         #builds the TRAINING model
+  #         docker build -f ./docker/train.Dockerfile -t gpt-llm ./docker
+  #         #builds the API server 
+  #         docker build -f ./docker/api.Dockerfile -t server ./docker
 
 
+  #     - name: runs-docker
+  #       run: |
+  #         curl https://ipinfo.io/ip
+  #         docker run -it --gpus all -v /home/ubuntu/gpt-llm-tuning:/usr/src/app gpt-llm
+  #         docker run -it --gpus all -v /home/ubuntu/gpt-llm-tuning/docker/app:/usr/src/app -p 80:8000 server
 
-      - name: Install dependencies
-        run: |
-          pip install requests  # or any other testing tools you use
 
-      - name: Run API tests
-        run: |
-          python test_api.py  # Replace with your API test script
+
+  #     - name: Install dependencies
+  #       run: |
+  #         pip install requests  # or any other testing tools you use
+
+  #     - name: Run API tests
+  #       run: |
+  #         python test_api.py  # Replace with your API test script
 
