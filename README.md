@@ -33,13 +33,13 @@ sudo docker build -f ./docker/train.Dockerfile -t gpt-llm ./docker
 
 Run Docker with gpus and starting the training mapping the volume of the VM to the docker image
 ```
-docker run -it --gpus all -v /home/ubuntu/gpt-llm-tuning:/usr/src/app gpt-llm
+sudo docker run -it --gpus all -v /home/ubuntu/gpt-llm-tuning:/usr/src/app gpt-llm
 ```
 ## Running inferences with API
 
 Building Docker file for inference
 ```
-docker build -f ./docker/api.Dockerfile -t server ./docker
+sudo docker build -f ./docker/api.Dockerfile -t server ./docker
 ```
 
 Launching FastAPI server (Uvicorn)
@@ -66,7 +66,7 @@ Suitability for Instruction Tuning: GPT-2 excels at generating coherent text tha
 
 2 - Quantization
 
-Quantization is applied to GPT-2 to reduce its model size and improve inference speed. This lowers memory and computational costs, making deployment more efficient on resource-limited devices. Despite using lower precision (e.g., 4-bit or 8-bit), quantization maintains acceptable performance, ensuring faster and cost-effective real-time applications, such as serving an API. for the implementation see the [main.py ](https://github.com/JLBT10/gpt2-ft/blob/main/main.py)
+Quantization is applied to GPT-2 to reduce its model size and improve inference speed. This lowers memory and computational costs, making deployment more efficient on resource-limited devices. Despite using lower precision (e.g., 4-bit or 8-bit), quantization maintains acceptable performance, ensuring faster and cost-effective real-time applications, such as serving an API. for the implementation see the [main.py ](https://github.com/debisic/gpt-llm-tuning.git/master/main.pyi)
 
 3 - Model Fine-tuning
 
