@@ -46,8 +46,8 @@ Launching FastAPI server (Uvicorn)
 ```
 docker run -it --gpus all -v /home/ubuntu/gpt-llm-tuning/docker/app:/usr/src/app -p 80:8000 server
 ```
-In order to visualize the default UI for testing the model through the API, you need to get the public IP of the ec2 instance and map it to port ```80/docs```` and run it in the web browser
-For example 10.26.224.133:80/docs where 10.26.224.133 is the public IP of the ec2 instance.
+In order to visualize the default UI for testing the model through the API, you need to get the public IP of the ec2 instance and map it to port ```80/docs``` and run it in the web browser
+For example *10.26.224.133:80/docs* where *10.26.224.133* is the public IP of the ec2 instance.
 
 
 
@@ -78,9 +78,9 @@ The API, built using FastAPI, provides an efficient interface for interacting wi
 
 The test was implemented using the requests library in Python to validate the API functionality:
 
-GET Request: Sends a request to the root endpoint (http://0.0.0.0:8000/)  with a timeout parameter to prevent the program from hanging.
+GET Request: Sends a request to the root endpoint *http://0.0.0.0:8000/*  with a timeout parameter to prevent the program from hanging.
 Error Handling: The test includes exception handling for timeout, connection errors, and other request-related exceptions to ensure robustness.
 
 ## NB
-The FastAPI endpoint above should be replaced with the IP of the VM mapped to port 80, for example 44.121.33.222:80 as shown in these [figures](./images/FastAPI-UI-1.png)
+The FastAPI endpoint above should be replaced with the IP of the VM mapped to port 80, for example *44.121.33.222:80* as shown in these [figures](./images/FastAPI-UI-1.png)
 
