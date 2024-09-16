@@ -81,6 +81,6 @@ The test was implemented using the requests library in Python to validate the AP
 GET Request: Sends a request to the root endpoint (http://0.0.0.0:8000/)  with a timeout parameter to prevent the program from hanging.
 Error Handling: The test includes exception handling for timeout, connection errors, and other request-related exceptions to ensure robustness.
 
-##NB
+## NB
 The FastAPI endpoint above should be replaced with the IP of the VM mapped to port 80, for example [44.121.33.222:80](./images/FastAPI-UI-1.png)
 
